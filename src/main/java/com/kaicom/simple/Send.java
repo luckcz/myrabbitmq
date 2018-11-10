@@ -24,6 +24,8 @@ public class Send {
 
 		System.out.println("发送消息"+msg+"成功");
 
+
+
 		createChannel.close();
 		connection.close();
 	}

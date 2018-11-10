@@ -50,6 +50,7 @@ public class Recv {
 		createChannel.basicConsume(QUEUE_NAME, true, consumer);
 
 		while(true){
+
 			Delivery nextDelivery = consumer.nextDelivery();
 			String getMsg = new String(nextDelivery.getBody());
 			System.out.println("recive msg : "+getMsg);
