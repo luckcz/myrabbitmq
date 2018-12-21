@@ -16,7 +16,7 @@ public class Send {
 
 		String msg = "hello direct!---info";
 
-		String routingKey = "info";
+		String routingKey = "error";
 
 		channel.basicPublish(EXCHANGE_NAME, routingKey,  null, msg.getBytes());
 		System.out.println("发送了消息："+msg);

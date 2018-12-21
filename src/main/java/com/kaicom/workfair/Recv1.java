@@ -9,7 +9,7 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.DefaultConsumer;
 
 public class Recv1 {
-	private static final String QUEUE_NAME = "test-work-queue";
+	private static final String QUEUE_NAME = "test-work-queue-fair";
 	public static void main(String[] args) throws IOException, TimeoutException {
 		//获取连接
 		Connection connection = ConnectionUtils.getConnection();
@@ -18,7 +18,7 @@ public class Recv1 {
 		final Channel channel = connection.createChannel();
 
 		//声名队列
-		channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+		channel.queueDeclare(QUEUE_NAME, true, false, false, null);
 
 		channel.basicQos(1);//保证一次只分发一个
 

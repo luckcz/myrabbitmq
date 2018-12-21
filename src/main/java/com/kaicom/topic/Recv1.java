@@ -18,7 +18,7 @@ public class Recv1 {
 		final Channel channel = conn.createChannel();
 		channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 		channel.basicQos(1);
-		String routingKey1 = "goods.add";
+		String routingKey1 = "goods.*";
 		String routingKey2 = "goods.delete";
 		channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, routingKey1);
 		channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, routingKey2);

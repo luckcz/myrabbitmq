@@ -8,8 +8,6 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConsumerCancelledException;
 import com.rabbitmq.client.DefaultConsumer;
-import com.rabbitmq.client.QueueingConsumer;
-import com.rabbitmq.client.QueueingConsumer.Delivery;
 import com.rabbitmq.client.ShutdownSignalException;
 
 public class Recv {
@@ -22,6 +20,7 @@ public class Recv {
 		Channel createChannel = conn.createChannel();
 
 		//队列声名
+		//exclusive设置了排外为true的队列只可以在本次的连接中被访问
 		createChannel.queueDeclare(QUEUE_NAME, false, false, false, null);
 
 		DefaultConsumer consumer = new DefaultConsumer(createChannel){
@@ -35,7 +34,7 @@ public class Recv {
 		createChannel.basicConsume(QUEUE_NAME, true, consumer);
 	}
 
-	//老版本的api
+	/*//老版本的api
 	public static void oldRec() throws IOException, ShutdownSignalException, ConsumerCancelledException, InterruptedException, TimeoutException{
 		//获取连接
 		Connection conn = ConnectionUtils.getConnection();
@@ -55,5 +54,5 @@ public class Recv {
 			String getMsg = new String(nextDelivery.getBody());
 			System.out.println("recive msg : "+getMsg);
 		}
-	}
+	}*/
 }

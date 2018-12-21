@@ -17,7 +17,7 @@ public class Send {
 		channel.exchangeDeclare(EXCHANGE_NAME, "topic");
 
 		String msg = "hi! hello!";
-		String routingKey = "goods.update";
+		String routingKey = "goods.update.abc";
 		channel.basicPublish(EXCHANGE_NAME, routingKey, null, msg.getBytes());
 		System.out.println("send msg :---->"+msg);
 		channel.close();

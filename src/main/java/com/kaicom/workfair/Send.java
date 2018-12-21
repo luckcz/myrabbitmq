@@ -8,7 +8,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
 public class Send {
-	private static final String QUEUE_NAME = "test-work-queue";
+	private static final String QUEUE_NAME = "test-work-queue-fair";
 	public static void main(String[] args) throws IOException, TimeoutException, InterruptedException {
 		//获取连接
 		Connection conn = ConnectionUtils.getConnection();
